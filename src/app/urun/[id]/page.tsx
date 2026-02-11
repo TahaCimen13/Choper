@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import products from "@/data/products.json";
 import { Product } from "@/types/product";
+import AddToCartButton from "@/components/AddToCartButton";
 
 const genderLabel: Record<string, string> = {
   Erkek: "border-sky-300/40 text-sky-700/70 bg-sky-50/50",
@@ -74,6 +75,10 @@ export default async function ProductDetail({
                 {product.price.toLocaleString("tr-TR")}
               </span>
               <span className="text-sm text-text-muted">TL</span>
+            </div>
+
+            <div className="mb-8">
+              <AddToCartButton productId={product.id} />
             </div>
 
             <div className="mb-8 h-px bg-border-light" />
