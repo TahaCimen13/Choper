@@ -1,0 +1,290 @@
+[
+  {
+    "id": "1",
+    "name": "Sauvage Eau de Parfum",
+    "brand": "Dior",
+    "gender": "Erkek",
+    "price": 4250,
+    "volume": "100ml",
+    "description": "Güçlü ve sofistike bir koku. Taze ve baharatlı notalarıyla dikkat çeken Sauvage, modern erkeğin vazgeçilmez parfümü.",
+    "notes": {
+      "ust": ["Bergamot", "Biber"],
+      "orta": ["Lavanta", "Karabiber", "Elemi"],
+      "alt": ["Ambroxan", "Sedir Ağacı", "Labdanum"]
+    },
+    "imageUrl": "/parfum-default.jpg",
+    "category": "Eau de Parfum"
+  },
+  {
+    "id": "2",
+    "name": "Bleu de Chanel",
+    "brand": "Chanel",
+    "gender": "Erkek",
+    "price": 4800,
+    "volume": "100ml",
+    "description": "Özgürlüğü ve kararlılığı simgeleyen woody aromatic bir parfüm. Zarif ve çok yönlü karakteriyle her ortama uyum sağlar.",
+    "notes": {
+      "ust": ["Limon", "Nane", "Greyfurt"],
+      "orta": ["Zencefil", "Yasemin", "Nutmeg"],
+      "alt": ["Sandal Ağacı", "Sedir Ağacı", "Vetiver"]
+    },
+    "imageUrl": "/parfum-default.jpg",
+    "category": "Eau de Parfum"
+  },
+  {
+    "id": "3",
+    "name": "Black Orchid",
+    "brand": "Tom Ford",
+    "gender": "Unisex",
+    "price": 6200,
+    "volume": "100ml",
+    "description": "Lüks ve gizemli bir koku deneyimi. Koyu çiçeksi ve baharatlı notalarıyla cesur ve unutulmaz bir iz bırakır.",
+    "notes": {
+      "ust": ["Siyah Frenk Üzümü", "Ylang Ylang", "Bergamot"],
+      "orta": ["Orkide", "Lotus", "Baharat"],
+      "alt": ["Paçuli", "Vanilya", "Sandal Ağacı"]
+    },
+    "imageUrl": "/parfum-default.jpg",
+    "category": "Eau de Parfum"
+  },
+  {
+    "id": "4",
+    "name": "La Vie Est Belle",
+    "brand": "Lancôme",
+    "gender": "Kadın",
+    "price": 3900,
+    "volume": "75ml",
+    "description": "Hayatın güzelliğini kutlayan feminen ve zarif bir parfüm. Tatlı ve çiçeksi notalarıyla mutluluk veren bir koku.",
+    "notes": {
+      "ust": ["Siyah Frenk Üzümü", "Armut"],
+      "orta": ["İris", "Yasemin", "Portakal Çiçeği"],
+      "alt": ["Vanilya", "Pralin", "Paçuli"]
+    },
+    "imageUrl": "/parfum-default.jpg",
+    "category": "Eau de Parfum"
+  },
+  {
+    "id": "5",
+    "name": "Eros",
+    "brand": "Versace",
+    "gender": "Erkek",
+    "price": 2800,
+    "volume": "100ml",
+    "description": "Yunan mitolojisinden ilham alan güçlü ve tutkulu bir erkek parfümü. Taze ve odunsu notalarıyla enerjik bir karakter sunar.",
+    "notes": {
+      "ust": ["Nane", "Yeşil Elma", "Limon"],
+      "orta": ["Tonka Fasulyesi", "Amber", "Sardunya"],
+      "alt": ["Vanilya", "Vetiver", "Meşe Yosunu"]
+    },
+    "imageUrl": "/parfum-default.jpg",
+    "category": "Eau de Toilette"
+  },
+  {
+    "id": "6",
+    "name": "Coco Mademoiselle",
+    "brand": "Chanel",
+    "gender": "Kadın",
+    "price": 5100,
+    "volume": "100ml",
+    "description": "Modern ve bağımsız kadının parfümü. Taze oryantal bir koku olup zarif ve çekici bir iz bırakır.",
+    "notes": {
+      "ust": ["Portakal", "Bergamot", "Greyfurt"],
+      "orta": ["Gül", "Yasemin", "Litçi"],
+      "alt": ["Paçuli", "Vetiver", "Vanilya"]
+    },
+    "imageUrl": "/parfum-default.jpg",
+    "category": "Eau de Parfum"
+  },
+  {
+    "id": "7",
+    "name": "La Nuit de L'Homme",
+    "brand": "Yves Saint Laurent",
+    "gender": "Erkek",
+    "price": 3200,
+    "volume": "100ml",
+    "description": "Gece için tasarlanmış sofistike ve baştan çıkarıcı bir erkek parfümü. Baharatlı ve odunsu notalarıyla etkileyici.",
+    "notes": {
+      "ust": ["Kardamom", "Bergamot", "Lavanta"],
+      "orta": ["Sedir Ağacı", "Kümün"],
+      "alt": ["Vetiver", "Tonka Fasulyesi"]
+    },
+    "imageUrl": "/parfum-default.jpg",
+    "category": "Eau de Toilette"
+  },
+  {
+    "id": "8",
+    "name": "J'adore",
+    "brand": "Dior",
+    "gender": "Kadın",
+    "price": 4500,
+    "volume": "100ml",
+    "description": "Zamansız bir kadınlık simgesi. Çiçeksi buketinin zenginliğiyle lüks ve feminenliği bir arada sunar.",
+    "notes": {
+      "ust": ["Armut", "Kavun", "Manolya"],
+      "orta": ["Gül", "Yasemin", "Zambak"],
+      "alt": ["Misk", "Vanilya", "Sedir Ağacı"]
+    },
+    "imageUrl": "/parfum-default.jpg",
+    "category": "Eau de Parfum"
+  },
+  {
+    "id": "9",
+    "name": "Acqua di Gio Profumo",
+    "brand": "Giorgio Armani",
+    "gender": "Erkek",
+    "price": 3600,
+    "volume": "125ml",
+    "description": "Akdeniz'in tazeliğini ve derinliğini bir arada sunan ikonik bir erkek parfümü. Aquatic ve aromatik notalarıyla ferah.",
+    "notes": {
+      "ust": ["Bergamot", "Deniz Notaları", "Greyfurt"],
+      "orta": ["Biberiye", "Adaçayı", "Sardunya"],
+      "alt": ["Amber", "Paçuli", "Meşe Yosunu"]
+    },
+    "imageUrl": "/parfum-default.jpg",
+    "category": "Eau de Parfum"
+  },
+  {
+    "id": "10",
+    "name": "Chance Eau Tendre",
+    "brand": "Chanel",
+    "gender": "Kadın",
+    "price": 4600,
+    "volume": "100ml",
+    "description": "Yumuşak ve romantik bir çiçeksi-meyveli koku. Genç ve enerjik kadın için ideal bir seçim.",
+    "notes": {
+      "ust": ["Greyfurt", "Ayva"],
+      "orta": ["Yasemin", "Sümbülteber"],
+      "alt": ["Misk", "Sedir Ağacı", "Amber"]
+    },
+    "imageUrl": "/parfum-default.jpg",
+    "category": "Eau de Toilette"
+  },
+  {
+    "id": "11",
+    "name": "Tobacco Vanille",
+    "brand": "Tom Ford",
+    "gender": "Unisex",
+    "price": 8500,
+    "volume": "50ml",
+    "description": "Sıcak ve sarmalayan bir oryantal koku. Tütün ve vanilyanın muhteşem uyumuyla kışın vazgeçilmezi.",
+    "notes": {
+      "ust": ["Tütün Yaprağı", "Baharat"],
+      "orta": ["Vanilya", "Tonka Fasulyesi", "Kakao"],
+      "alt": ["Kuru Meyve", "Odunsu Notalar"]
+    },
+    "imageUrl": "/parfum-default.jpg",
+    "category": "Eau de Parfum"
+  },
+  {
+    "id": "12",
+    "name": "Light Blue",
+    "brand": "Dolce & Gabbana",
+    "gender": "Kadın",
+    "price": 2600,
+    "volume": "100ml",
+    "description": "Akdeniz yazının tazeliğini yansıtan canlı ve ferah bir kadın parfümü. Meyveli ve çiçeksi notalarıyla neşeli.",
+    "notes": {
+      "ust": ["Sedir", "Elma", "Bluebell"],
+      "orta": ["Yasemin", "Bambu", "Beyaz Gül"],
+      "alt": ["Sedir Ağacı", "Amber", "Misk"]
+    },
+    "imageUrl": "/parfum-default.jpg",
+    "category": "Eau de Toilette"
+  },
+  {
+    "id": "13",
+    "name": "Aventus",
+    "brand": "Creed",
+    "gender": "Erkek",
+    "price": 12000,
+    "volume": "100ml",
+    "description": "Gücü, vizyonu ve başarıyı simgeleyen efsanevi bir erkek parfümü. Meyveli ve dumanlı notalarıyla eşsiz.",
+    "notes": {
+      "ust": ["Ananas", "Bergamot", "Elma", "Siyah Frenk Üzümü"],
+      "orta": ["Huş Ağacı", "Yasemin", "Gül"],
+      "alt": ["Meşe Yosunu", "Misk", "Amber", "Vanilya"]
+    },
+    "imageUrl": "/parfum-default.jpg",
+    "category": "Eau de Parfum"
+  },
+  {
+    "id": "14",
+    "name": "Mon Paris",
+    "brand": "Yves Saint Laurent",
+    "gender": "Kadın",
+    "price": 3400,
+    "volume": "90ml",
+    "description": "Paris'in romantizminden ilham alan tutkulu ve yoğun bir kadın parfümü. Çiçeksi ve meyveli notalarıyla büyüleyici.",
+    "notes": {
+      "ust": ["Çilek", "Ahududu", "Armut"],
+      "orta": ["Beyaz Şakayık", "Yasemin", "Datura"],
+      "alt": ["Paçuli", "Beyaz Misk", "Ambroxan"]
+    },
+    "imageUrl": "/parfum-default.jpg",
+    "category": "Eau de Parfum"
+  },
+  {
+    "id": "15",
+    "name": "Oud Wood",
+    "brand": "Tom Ford",
+    "gender": "Unisex",
+    "price": 7800,
+    "volume": "50ml",
+    "description": "Nadir ve değerli oud ağacının büyüleyici kokusunu modern bir yorumla sunan lüks bir parfüm.",
+    "notes": {
+      "ust": ["Oud", "Biberiye", "Kardamom"],
+      "orta": ["Sandal Ağacı", "Vetiver", "Tonka Fasulyesi"],
+      "alt": ["Amber", "Misk", "Vanilya"]
+    },
+    "imageUrl": "/parfum-default.jpg",
+    "category": "Eau de Parfum"
+  },
+  {
+    "id": "16",
+    "name": "1 Million",
+    "brand": "Paco Rabanne",
+    "gender": "Erkek",
+    "price": 2900,
+    "volume": "100ml",
+    "description": "Cesur ve karizmatik bir erkek parfümü. Taze baharatlı ve deri notalarıyla dikkat çekici ve akılda kalıcı.",
+    "notes": {
+      "ust": ["Greyfurt", "Nane", "Kan Portakalı"],
+      "orta": ["Tarçın", "Baharat", "Gül"],
+      "alt": ["Deri", "Amber", "Odunsu Notalar"]
+    },
+    "imageUrl": "/parfum-default.jpg",
+    "category": "Eau de Toilette"
+  },
+  {
+    "id": "17",
+    "name": "Flowerbomb",
+    "brand": "Viktor & Rolf",
+    "gender": "Kadın",
+    "price": 3700,
+    "volume": "100ml",
+    "description": "Çiçek patlaması anlamına gelen bu parfüm, yoğun çiçeksi notalarıyla feminen ve büyüleyici bir deneyim sunar.",
+    "notes": {
+      "ust": ["Çay", "Bergamot"],
+      "orta": ["Yasemin", "Orkide", "Gül", "Frezya"],
+      "alt": ["Paçuli", "Vanilya", "Misk"]
+    },
+    "imageUrl": "/parfum-default.jpg",
+    "category": "Eau de Parfum"
+  },
+  {
+    "id": "18",
+    "name": "Baccarat Rouge 540",
+    "brand": "Maison Francis Kurkdjian",
+    "gender": "Unisex",
+    "price": 15000,
+    "volume": "70ml",
+    "description": "Kristal berraklığında lüks bir parfüm. Safran ve amberwood'un eşsiz birleşimiyle büyüleyici ve sofistike.",
+    "notes": {
+      "ust": ["Safran", "Yasemin"],
+      "orta": ["Amberwood", "Sedir Ağacı"],
+      "alt": ["Amber", "Misk", "Meşe Yosunu"]
+    },
+    "imageUrl": "/parfum-default.jpg",
+    "category": "Eau de Parfum"
+  }
+]
