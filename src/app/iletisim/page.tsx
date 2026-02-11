@@ -39,7 +39,7 @@ export default function Iletisim() {
               E-posta
             </h3>
             <p className="text-sm font-light text-text-secondary">
-              iletisim@parfumkatalog.com
+              iletisim@choper.com
             </p>
           </div>
 
