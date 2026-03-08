@@ -68,12 +68,12 @@ export default function ProductDetail() {
       <div className="overflow-hidden rounded-2xl border border-border bg-surface">
         <div className="flex flex-col md:flex-row">
           {/* Image */}
-          <div className="relative h-80 bg-ivory-warm md:h-auto md:min-h-[560px] md:w-1/2">
+          <div className="relative h-80 bg-[#f7f4ef] md:h-auto md:min-h-[560px] md:w-1/2">
             <Image
               src={product.imageUrl || "/parfum-default.jpg"}
               alt={product.name}
               fill
-              className="object-cover"
+              className="object-contain p-8"
               sizes="(max-width: 768px) 100vw, 50vw"
               priority
             />
