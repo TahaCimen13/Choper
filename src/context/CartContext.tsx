@@ -65,25 +65,28 @@ export function CartProvider({ children }: { children: ReactNode }) {
     if (!user || !loaded) return;
 
     async function syncCart() {
-      const ref = doc(db, "users", user!.uid, "cart", "items");
-      const snap = await getDoc(ref);
-      const firestoreItems: CartItem[] = snap.exists()
-        ? snap.data().items ?? []
-        : [];
+      try {
+        const ref = doc(db, "users", user!.uid, "cart", "items");
+        const snap = await getDoc(ref);
+        const firestoreItems: CartItem[] = snap.exists()
+          ? snap.data().items ?? []
+          : [];
 
-      const localItems = readLocalCart();
+        const localItems = readLocalCart();
 
-      // Merge: local items take priority, add firestore items not in local
-      const merged = [...localItems];
-      for (const fi of firestoreItems) {
-        if (!merged.find((m) => m.productId === fi.productId)) {
-          merged.push(fi);
+        const merged = [...localItems];
+        for (const fi of firestoreItems) {
+          if (!merged.find((m) => m.productId === fi.productId)) {
+            merged.push(fi);
+          }
         }
-      }
 
-      setItems(merged);
-      writeLocalCart(merged);
-      await setDoc(ref, { items: merged });
+        setItems(merged);
+        writeLocalCart(merged);
+        await setDoc(ref, { items: merged });
+      } catch {
+        // Firestore erişilemezse localStorage ile devam et
+      }
     }
 
     syncCart();
@@ -96,7 +99,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       writeLocalCart(next);
       if (user) {
         const ref = doc(db, "users", user.uid, "cart", "items");
-        setDoc(ref, { items: next });
+        setDoc(ref, { items: next }).catch(() => {});
       }
     },
     [user]

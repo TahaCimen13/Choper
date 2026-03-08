@@ -1,7 +1,11 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { notFound } from "next/navigation";
-import products from "@/data/products.json";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 import { Product } from "@/types/product";
 import AddToCartButton from "@/components/AddToCartButton";
 
@@ -11,19 +15,43 @@ const genderLabel: Record<string, string> = {
   Unisex: "border-violet-300/40 text-violet-700/70 bg-violet-50/50",
 };
 
-export function generateStaticParams() {
-  return (products as Product[]).map((p) => ({ id: p.id }));
-}
+export default function ProductDetail() {
+  const { id } = useParams<{ id: string }>();
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState(true);
 
-export default async function ProductDetail({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = await params;
-  const product = (products as Product[]).find((p) => p.id === id);
+  useEffect(() => {
+    async function load() {
+      try {
+        const snap = await getDoc(doc(db, "products", id));
+        if (snap.exists()) {
+          setProduct({ id: snap.id, ...snap.data() } as Product);
+        }
+      } finally {
+        setLoading(false);
+      }
+    }
+    load();
+  }, [id]);
 
-  if (!product) notFound();
+  if (loading) {
+    return (
+      <div className="flex min-h-[60vh] items-center justify-center">
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-border border-t-gold" />
+      </div>
+    );
+  }
+
+  if (!product) {
+    return (
+      <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4">
+        <p className="text-sm text-text-muted">Ürün bulunamadı.</p>
+        <Link href="/katalog" className="text-xs text-gold hover:text-gold-dark">
+          Kataloğa Dön
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="mx-auto max-w-5xl px-6 py-10">
@@ -42,7 +70,7 @@ export default async function ProductDetail({
           {/* Image */}
           <div className="relative h-80 bg-ivory-warm md:h-auto md:min-h-[560px] md:w-1/2">
             <Image
-              src={product.imageUrl}
+              src={product.imageUrl || "/parfum-default.jpg"}
               alt={product.name}
               fill
               className="object-cover"
@@ -61,9 +89,7 @@ export default async function ProductDetail({
             </h1>
 
             <div className="mb-6 flex items-center gap-3">
-              <span
-                className={`rounded-full border px-3 py-1 text-[10px] font-medium tracking-wide ${genderLabel[product.gender]}`}
-              >
+              <span className={`rounded-full border px-3 py-1 text-[10px] font-medium tracking-wide ${genderLabel[product.gender]}`}>
                 {product.gender}
               </span>
               <span className="text-xs text-text-muted">{product.volume}</span>
@@ -94,45 +120,30 @@ export default async function ProductDetail({
               </h2>
               <div className="grid gap-6 sm:grid-cols-3">
                 <div>
-                  <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.2em] text-text-muted">
-                    Üst Notalar
-                  </p>
+                  <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.2em] text-text-muted">Üst Notalar</p>
                   <div className="flex flex-wrap gap-1.5">
                     {product.notes.ust.map((note) => (
-                      <span
-                        key={note}
-                        className="rounded-full border border-gold/20 bg-gold/5 px-2.5 py-1 text-[10px] text-gold-dark"
-                      >
+                      <span key={note} className="rounded-full border border-gold/20 bg-gold/5 px-2.5 py-1 text-[10px] text-gold-dark">
                         {note}
                       </span>
                     ))}
                   </div>
                 </div>
                 <div>
-                  <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.2em] text-text-muted">
-                    Orta Notalar
-                  </p>
+                  <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.2em] text-text-muted">Orta Notalar</p>
                   <div className="flex flex-wrap gap-1.5">
                     {product.notes.orta.map((note) => (
-                      <span
-                        key={note}
-                        className="rounded-full border border-rose-300/20 bg-rose-50/50 px-2.5 py-1 text-[10px] text-rose-800/60"
-                      >
+                      <span key={note} className="rounded-full border border-rose-300/20 bg-rose-50/50 px-2.5 py-1 text-[10px] text-rose-800/60">
                         {note}
                       </span>
                     ))}
                   </div>
                 </div>
                 <div>
-                  <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.2em] text-text-muted">
-                    Alt Notalar
-                  </p>
+                  <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.2em] text-text-muted">Alt Notalar</p>
                   <div className="flex flex-wrap gap-1.5">
                     {product.notes.alt.map((note) => (
-                      <span
-                        key={note}
-                        className="rounded-full border border-stone-300/30 bg-stone-100/50 px-2.5 py-1 text-[10px] text-stone-600/70"
-                      >
+                      <span key={note} className="rounded-full border border-stone-300/30 bg-stone-100/50 px-2.5 py-1 text-[10px] text-stone-600/70">
                         {note}
                       </span>
                     ))}

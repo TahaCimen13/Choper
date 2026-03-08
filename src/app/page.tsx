@@ -9,8 +9,10 @@ const featured = (products as Product[]).slice(0, 4);
 export default function Home() {
   return (
     <div>
-      {/* Hero */}
-      <HeroSlider />
+      {/* Hero - negative margin to slide under fixed transparent header */}
+      <div className="-mt-[88px]">
+        <HeroSlider />
+      </div>
 
       {/* Featured */}
       <section className="mx-auto max-w-7xl px-6 py-20">

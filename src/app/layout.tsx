@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import SiteShell from "@/components/SiteShell";
 import { AuthProvider } from "@/context/AuthContext";
 import { CartProvider } from "@/context/CartContext";
 import "./globals.css";
@@ -21,6 +19,16 @@ export const metadata: Metadata = {
   title: "Choper - En Seçkin Parfümler",
   description:
     "Choper ile Dior, Chanel, Tom Ford ve daha birçok markanın en seçkin parfümlerini keşfedin. Marka, cinsiyet ve fiyata göre filtreleyin.",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
+  openGraph: {
+    title: "Choper - En Seçkin Parfümler",
+    description:
+      "Choper ile Dior, Chanel, Tom Ford ve daha birçok markanın en seçkin parfümlerini keşfedin.",
+    images: [{ url: "/logo.png" }],
+  },
 };
 
 export default function RootLayout({
@@ -35,12 +43,7 @@ export default function RootLayout({
       >
         <AuthProvider>
           <CartProvider>
-            <div className="flex min-h-screen flex-col">
-              <Header />
-              <main className="flex-1">{children}</main>
-              <Footer />
-              <WhatsAppButton />
-            </div>
+            <SiteShell>{children}</SiteShell>
           </CartProvider>
         </AuthProvider>
       </body>

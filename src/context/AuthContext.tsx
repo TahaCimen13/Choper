@@ -11,7 +11,8 @@ import {
   signInWithPopup,
   updateProfile,
 } from "firebase/auth";
-import { auth } from "@/lib/firebase";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
+import { auth, db } from "@/lib/firebase";
 
 interface AuthContextType {
   user: User | null;
@@ -40,9 +41,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return unsubscribe;
   }, []);
 
+  async function saveUserProfile(user: User) {
+    try {
+      await setDoc(
+        doc(db, "userProfiles", user.uid),
+        {
+          displayName: user.displayName || "",
+          email: user.email || "",
+          createdAt: serverTimestamp(),
+        },
+        { merge: true }
+      );
+    } catch {
+      // non-critical
+    }
+  }
+
   async function signup(email: string, password: string, displayName: string) {
     const result = await createUserWithEmailAndPassword(auth, email, password);
     await updateProfile(result.user, { displayName });
+    await saveUserProfile(result.user);
   }
 
   async function login(email: string, password: string) {
@@ -55,7 +73,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   async function loginWithGoogle() {
     const provider = new GoogleAuthProvider();
-    await signInWithPopup(auth, provider);
+    const result = await signInWithPopup(auth, provider);
+    await saveUserProfile(result.user);
   }
 
   const value = { user, loading, signup, login, logout, loginWithGoogle };

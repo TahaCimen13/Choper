@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import products from "@/data/products.json";
+import { useState, useMemo, useEffect } from "react";
+import staticProducts from "@/data/products.json";
 import { Product } from "@/types/product";
+import { getProducts } from "@/lib/products";
 import FilterSidebar from "@/components/FilterSidebar";
 import ProductGrid from "@/components/ProductGrid";
 
@@ -16,17 +17,38 @@ const initialFilters = {
 };
 
 export default function Home() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loadingProducts, setLoadingProducts] = useState(true);
   const [filters, setFilters] = useState(initialFilters);
   const [sort, setSort] = useState<SortOption>("name-az");
   const [search, setSearch] = useState("");
 
+  useEffect(() => {
+    async function loadProducts() {
+      try {
+        const data = await getProducts();
+        if (data.length > 0) {
+          setProducts(data);
+        } else {
+          setProducts(staticProducts as Product[]);
+        }
+      } catch (err) {
+        console.error("Firestore'dan ürünler yüklenemedi, JSON kullanılıyor:", err);
+        setProducts(staticProducts as Product[]);
+      } finally {
+        setLoadingProducts(false);
+      }
+    }
+    loadProducts();
+  }, []);
+
   const allBrands = useMemo(
-    () => [...new Set((products as Product[]).map((p) => p.brand))].sort(),
-    []
+    () => [...new Set(products.map((p) => p.brand))].sort(),
+    [products]
   );
 
   const filtered = useMemo(() => {
-    let result = products as Product[];
+    let result = products;
 
     if (search.trim()) {
       const q = search.toLowerCase();
@@ -59,7 +81,7 @@ export default function Home() {
     });
 
     return result;
-  }, [filters, sort, search]);
+  }, [products, filters, sort, search]);
 
   return (
     <div className="mx-auto max-w-7xl px-6 py-10">
@@ -95,39 +117,48 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-10 lg:flex-row">
-        {/* Sidebar */}
-        <aside className="w-full shrink-0 lg:w-56">
-          <FilterSidebar
-            allBrands={allBrands}
-            filters={filters}
-            onFilterChange={setFilters}
-            onClear={() => setFilters(initialFilters)}
-          />
-        </aside>
-
-        {/* Main */}
-        <div className="flex-1">
-          <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-xs tracking-wide text-text-muted">
-              <span className="font-medium text-text">
-                {filtered.length}
-              </span>{" "}
-              ürün bulundu
-            </p>
-            <select
-              value={sort}
-              onChange={(e) => setSort(e.target.value as SortOption)}
-              className="rounded-lg border border-border bg-surface px-3 py-2 text-xs tracking-wide text-text-secondary focus:border-gold/40 focus:outline-none focus:ring-1 focus:ring-gold/20"
-            >
-              <option value="name-az">İsim (A-Z)</option>
-              <option value="price-asc">Fiyat (Düşükten Yükseğe)</option>
-              <option value="price-desc">Fiyat (Yüksekten Düşüğe)</option>
-            </select>
+      {loadingProducts ? (
+        <div className="flex items-center justify-center py-20">
+          <div className="flex flex-col items-center gap-4">
+            <div className="h-8 w-8 animate-spin rounded-full border-2 border-border border-t-gold" />
+            <p className="text-xs tracking-widest text-text-muted">YÜKLENİYOR</p>
           </div>
-          <ProductGrid products={filtered} />
         </div>
-      </div>
+      ) : (
+        <div className="flex flex-col gap-10 lg:flex-row">
+          {/* Sidebar */}
+          <aside className="w-full shrink-0 lg:w-56">
+            <FilterSidebar
+              allBrands={allBrands}
+              filters={filters}
+              onFilterChange={setFilters}
+              onClear={() => setFilters(initialFilters)}
+            />
+          </aside>
+
+          {/* Main */}
+          <div className="flex-1">
+            <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-xs tracking-wide text-text-muted">
+                <span className="font-medium text-text">
+                  {filtered.length}
+                </span>{" "}
+                ürün bulundu
+              </p>
+              <select
+                value={sort}
+                onChange={(e) => setSort(e.target.value as SortOption)}
+                className="rounded-lg border border-border bg-surface px-3 py-2 text-xs tracking-wide text-text-secondary focus:border-gold/40 focus:outline-none focus:ring-1 focus:ring-gold/20"
+              >
+                <option value="name-az">İsim (A-Z)</option>
+                <option value="price-asc">Fiyat (Düşükten Yükseğe)</option>
+                <option value="price-desc">Fiyat (Yüksekten Düşüğe)</option>
+              </select>
+            </div>
+            <ProductGrid products={filtered} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

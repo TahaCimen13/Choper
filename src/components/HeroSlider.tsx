@@ -12,7 +12,7 @@ const slides = [
       "Akdeniz bahçelerinden ilham alan portakal çiçeği notaları, tazeliği ve zarafeti bir arada sunar. Enerjik açılışı ve yumuşak geçişiyle her mevsim vazgeçilmeziniz olacak.",
     buttonText: "Koleksiyonu Keşfet",
     buttonHref: "/katalog",
-    image: "/parfum-default.jpg",
+    image: "/slider1.jpg",
   },
   {
     subtitle: "Oryantal Notalar",
@@ -21,16 +21,7 @@ const slides = [
       "Güçlü ve kararlı deri notaları, parfüme derinlik ve karakter katar. Dumanlı, sıcak alt tonlarıyla sofistike bir iz bırakmak isteyenler için.",
     buttonText: "Deri Notalarını İncele",
     buttonHref: "/katalog",
-    image: "/parfum-default.jpg",
-  },
-  {
-    subtitle: "Odunsu Notalar",
-    title: "Sandal Ağacı",
-    description:
-      "Sandal ağacının kremsi ve sıcak dokusu, parfümün kalbine huzur verir. Meditasyondan haute couture'a uzanan asırlık bir gelenek.",
-    buttonText: "Odunsu Koleksiyon",
-    buttonHref: "/katalog",
-    image: "/parfum-default.jpg",
+    image: "/slider2.jpg",
   },
   {
     subtitle: "Çiçeksi Notalar",
@@ -39,7 +30,16 @@ const slides = [
       "Gecenin kraliçesi olarak bilinen yasemin, büyüleyici ve sarhoş edici aromasıyla parfümeride en çok tercih edilen çiçek notasıdır.",
     buttonText: "Çiçeksi Seçkiler",
     buttonHref: "/katalog",
-    image: "/parfum-default.jpg",
+    image: "/slider3.jpg",
+  },
+  {
+    subtitle: "Odunsu Notalar",
+    title: "Sandal Ağacı",
+    description:
+      "Sandal ağacının kremsi ve sıcak dokusu, parfümün kalbine huzur verir. Meditasyondan haute couture'a uzanan asırlık bir gelenek.",
+    buttonText: "Odunsu Koleksiyon",
+    buttonHref: "/katalog",
+    image: "/slider4.jpg",
   },
 ];
 
@@ -60,7 +60,7 @@ export default function HeroSlider() {
   }, [next]);
 
   return (
-    <section className="relative overflow-hidden bg-surface-warm">
+    <section className="relative h-screen overflow-hidden bg-surface-warm">
       {/* Background images */}
       {slides.map((slide, i) => (
         <div
@@ -105,7 +105,7 @@ export default function HeroSlider() {
       </button>
 
       {/* Slides content */}
-      <div className="relative z-[1] mx-auto max-w-7xl px-6 py-28 sm:py-36">
+      <div className="relative z-[1] flex h-full items-center justify-center px-6">
         <div className="mx-auto max-w-2xl text-center">
           {slides.map((slide, i) => (
             <div
