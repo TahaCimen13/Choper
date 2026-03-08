@@ -27,12 +27,12 @@ export default function ProductCard({ product }: { product: Product }) {
   return (
     <Link href={`/urun/${product.id}`} className="group block">
       <div className="overflow-hidden rounded-2xl border border-border bg-surface transition-all duration-500 hover:border-gold/30 hover:shadow-[0_8px_30px_-12px_rgba(166,139,91,0.15)]">
-        <div className="relative h-60 overflow-hidden bg-ivory-warm">
+        <div className="relative h-60 overflow-hidden bg-[#f7f4ef]">
           <Image
             src={product.imageUrl}
             alt={product.name}
             fill
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
+            className="object-contain p-4 transition-transform duration-700 group-hover:scale-105"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           />
           <button
